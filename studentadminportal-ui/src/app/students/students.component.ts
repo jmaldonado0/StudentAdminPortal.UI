@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -14,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class StudentsComponent implements OnInit {
   students: Student[] = [];
-  displayedColumns: string[] = ['firstName','lastName','dateOfBirth','email','mobile','gender'];
+  displayedColumns: string[] = ['firstName','lastName','dateOfBirth','email','mobile','gender','edit'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
 
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
@@ -26,7 +27,7 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     //Fetch Students
-    this.studentService.getStudent()
+    this.studentService.getStudents()
     .subscribe(
         (successReponse) => {
           this.students = successReponse;
